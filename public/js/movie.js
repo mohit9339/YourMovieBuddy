@@ -1,5 +1,6 @@
 const API_KEY = "5a5aa1df6b6c58301b9f3b307582dccd";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com"; // ✅ Replace with your actual Render backend URL
 
 document.addEventListener("DOMContentLoaded", () => {
   const movieId = getMovieIdFromURL();
@@ -26,7 +27,7 @@ function fetchMovieDetails(id) {
       fetchRelatedMovies(genreIds, data.id);
 
       if (data.imdb_id) fetchIMDBRating(data.imdb_id);
-      fetchMovieDirector(data.id); // ✅ Fetch director info
+      fetchMovieDirector(data.id);
     })
     .catch(err => {
       console.error("❌ Error fetching movie:", err);
@@ -67,7 +68,7 @@ function fetchMovieDirector(movieId) {
 }
 
 function fetchIMDBRating(imdbId) {
-  fetch(`http://localhost:3000/api/imdb-rating/${imdbId}`)
+  fetch(`${API_BASE_URL}/api/imdb-rating/${imdbId}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById("imdbRating").textContent = `IMDb Rating: ${data.rating || "N/A"}`;
@@ -82,7 +83,7 @@ function fetchAndHighlightUserLists(movieId) {
   const email = localStorage.getItem("userEmail");
   if (!email) return;
 
-  fetch(`http://localhost:3000/api/user/${email}/lists`)
+  fetch(`${API_BASE_URL}/api/user/${email}/lists`)
     .then(res => res.json())
     .then(lists => {
       if (lists.favorites.includes(+movieId)) updateButton("favorites", true);
@@ -110,7 +111,7 @@ function addToList(type) {
     return;
   }
 
-  fetch(`http://localhost:3000/api/user/${email}/lists`, {
+  fetch(`${API_BASE_URL}/api/user/${email}/lists`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ type, movieId, action: "add" })
@@ -134,7 +135,7 @@ function removeFromList(type) {
     return;
   }
 
-  fetch(`http://localhost:3000/api/user/${email}/lists`, {
+  fetch(`${API_BASE_URL}/api/user/${email}/lists`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ type, movieId, action: "remove" })
@@ -157,10 +158,10 @@ function updateButton(type, isInList) {
     btn.textContent = `Remove from ${capitalize(type)}`;
     btn.classList.remove("border-blue-500", "text-blue-400", "hover:bg-blue-500");
     btn.classList.remove("border-pink-500", "text-pink-400", "hover:bg-pink-500");
-    btn.classList.add("bg-red-500", "hover:bg-red-600", "text-white","border-red-500");
+    btn.classList.add("bg-red-500", "hover:bg-red-600", "text-white", "border-red-500");
   } else {
     btn.textContent = `Add to ${capitalize(type)}`;
-    btn.classList.remove("bg-red-500", "hover:bg-red-600", "text-white","border-red-500");
+    btn.classList.remove("bg-red-500", "hover:bg-red-600", "text-white", "border-red-500");
     if (type === "favorites") {
       btn.classList.add("border-pink-500", "text-pink-400", "hover:bg-pink-500");
     } else {

@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com"; // ✅ Replace with your actual backend URL
+
 document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -13,10 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Fetch user's lists
-  fetch(`http://localhost:3000/api/user/${user.email}/lists`)
+  fetch(`${API_BASE_URL}/api/user/${user.email}/lists`)
     .then(res => res.json())
     .then(data => {
-      // Set counts
       document.getElementById("watchedCount").textContent = data.watched?.length || 0;
       document.getElementById("favoritesCount").textContent = data.favorites?.length || 0;
     })

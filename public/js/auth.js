@@ -1,15 +1,15 @@
+// ⛳️ Replace this with your actual Render backend URL
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com";
+
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
   const loginForm = document.getElementById("loginForm");
 
   const email = localStorage.getItem("userEmail");
   if (email) {
-    // Already logged in, redirect to homepage
     window.location.href = "index.html";
   }
 
-
-  
   // 🔐 Signup logic
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const res = await fetch("http://localhost:3000/api/signup", {
+        const res = await fetch(`${API_BASE_URL}/api/signup`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const res = await fetch("http://localhost:3000/api/login", {
+        const res = await fetch(`${API_BASE_URL}/api/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await res.json();
 
         if (res.ok) {
-          localStorage.setItem("userEmail", email); 
+          localStorage.setItem("userEmail", email);
           alert("Login successful!");
           window.location.href = "index.html";
         } else {

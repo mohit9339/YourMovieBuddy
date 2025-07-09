@@ -1,6 +1,9 @@
 const API_KEY = "5a5aa1df6b6c58301b9f3b307582dccd";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
+// ✅ Your deployed backend URL (change if needed)
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com";
+
 document.addEventListener("DOMContentLoaded", () => {
   const user = getCurrentUser();
   if (!user) {
@@ -24,7 +27,7 @@ function getCurrentUser() {
 
 // 📦 Fetch user lists from backend
 function fetchUserLists(email) {
-  fetch(`http://localhost:3000/api/user/${email}/lists`)
+  fetch(`${API_BASE_URL}/api/user/${email}/lists`)
     .then(res => {
       if (!res.ok) throw new Error("Failed to fetch lists.");
       return res.json();
@@ -60,7 +63,6 @@ function loadMoviesFromIds(ids, containerId, type) {
           card.innerHTML = `
             <a href="movie.html?id=${movie.id}">
             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${movie.title}" class="w-full aspect-[2/3] object-cover" />
-
             </a>
             <div class="p-3 flex flex-col items-center justify-between flex-grow">
               <h4 class="text-sm font-medium text-center truncate w-full mb-2">${movie.title}</h4>
@@ -82,7 +84,6 @@ function loadMoviesFromIds(ids, containerId, type) {
   });
 }
 
-
 // ❌ Remove movie from a list
 function removeFromList(type, movieId) {
   const user = getCurrentUser();
@@ -91,7 +92,7 @@ function removeFromList(type, movieId) {
     return;
   }
 
-  fetch(`http://localhost:3000/api/user/${user.email}/lists`, {
+  fetch(`${API_BASE_URL}/api/user/${user.email}/lists`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ type, movieId, action: "remove" })
