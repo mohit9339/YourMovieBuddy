@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+      .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;     
+  }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- 🔝 Navbar -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold text-teal-400">YourMovieBuddy</div>
+
+    <div class="flex-1 mx-6 max-w-xl">
+      <div class="flex">
+        <input id="searchInput" type="text" placeholder="Search for movies..."
+               class="w-full px-4 py-2 text-black rounded-l-md focus:outline-none" />
+        <button onclick="searchMovies()" class="px-4 py-2 bg-teal-500 hover:bg-teal-600 rounded-r-md text-white">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <div class="space-x-4 text-sm">
+      <a href="dashboard.html" class="hover:text-teal-400">Dashboard</a>
+      <a href="profile.html" class="hover:text-teal-400">Profile</a>
+      <a href="#" onclick="logout()" class="hover:text-red-400">Log out</a>
+    </div>
+  </header>
+
+  <!-- 🎛️ Filters (Dropdowns inline) -->
+  <div class="flex flex-wrap items-center justify-between px-6 py-4 bg-gray-800 shadow-md">
+    <div class="flex flex-wrap gap-6 items-center">
+      <!-- Genre Filter -->
+      <div class="flex items-center space-x-2">
+        <label for="genreDropdown" class="text-sm">Genre:</label>
+        <select id="genreDropdown" onchange="filterByGenre(this.value)"
+                class="px-3 py-2 rounded-md text-black">
+          <option value="">-- Select Genre --</option>
+        </select>
+      </div>
+  
+      <!-- Language Filter -->
+      <div class="flex items-center space-x-2">
+        <label for="languageDropdown" class="text-sm">Language:</label>
+        <select id="languageDropdown" onchange="filterByLanguage(this.value)"
+                class="px-3 py-2 rounded-md text-black">
+          <option value="">-- Select Language --</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Director Button on the right -->
+    <button onclick="window.location.href='directors.html'" 
+            class="px-4 py-2 bg-green-600 hover:bg-green-750 rounded text-white mt-4 lg:mt-0">
+      Explore Directors
+    </button>
+  </div>
+  
+
+  <!-- 🎞️ Movie Sections -->
+  <main class="px-6 py-8 space-y-12">
+
+
+  
+    
+
+    <!-- 🔁 Movie Row Template -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-l-4 border-teal-400 pl-2">Popular Hollywood Movies</h2>
+      <div id="popularMovies" class="flex gap-4 overflow-x-auto pt-2 pb-2 pl-2 pr-2 scroll-smooth snap-x snap-mandatory scrollbar-hide">
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-l-4 border-yellow-400 pl-2">Popular Hindi Movies</h2>
+      <div id="hindiMovies" class="flex gap-4 overflow-x-auto pt-2 pb-2 pl-2 pr-2 scroll-smooth snap-x snap-mandatory scrollbar-hide"></div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-l-4 border-green-400 pl-2">From Oscars</h2>
+      <div id="oscarMovies" class="flex gap-4 overflow-x-auto pt-2 pb-2 pl-2 pr-2 scroll-smooth snap-x snap-mandatory scrollbar-hide"></div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-l-4 border-blue-400 pl-2">From Cannes</h2>
+      <div id="cannesMovies" class="flex gap-4 overflow-x-auto pt-2 pb-2 pl-2 pr-2 scroll-smooth snap-x snap-mandatory scrollbar-hide"></div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-l-4 border-indigo-400 pl-2">IMDb Top Picks</h2>
+      <div id="imdbTopMovies" class="flex gap-4 overflow-x-auto pt-2 pb-2 pl-2 pr-2 scroll-smooth snap-x snap-mandatory scrollbar-hide"></div>
+    </section>
+  </main>
+
+  <!-- 🎬 JS -->
+  <script src="js/home.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/protect.js"></script>
+</body>
+</html>

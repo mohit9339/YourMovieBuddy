@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Details - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- 🔝 Navbar -->
+  <header class="flex justify-between items-center px-6 py-4 bg-gray-800 shadow">
+    <div class="text-2xl font-bold text-blue-400">
+      <a href="index.html">YourMovieBuddy</a>
+    </div>
+    <div class="flex gap-4 items-center">
+      <input type="text" id="searchInput" placeholder="Search for movies..." class="px-3 py-1 rounded bg-gray-700 text-white placeholder-gray-400 focus:ring focus:ring-blue-500"/>
+      <button onclick="searchMovies()" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-white font-medium">Search</button>
+      <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+      <a href="dashboard.html" class="text-gray-300 hover:text-white">Dashboard</a>
+      <a href="#" onclick="logout()" class="text-gray-300 hover:text-red-400">Logout</a>
+    </div>
+  </header>
+
+  <!-- 🎬 Movie Details -->
+  <main class="p-8">
+    <div class="flex items-center flex-col lg:flex-row gap-8">
+      
+      <!-- Poster -->
+      <div class="w-full lg:w-1/5">
+        <img id="moviePoster" src="" alt="Movie Poster" class="rounded shadow-lg w-full object-cover aspect-[2/3]" />
+      </div>
+
+      <!-- Info -->
+      <div class="w-full lg:w-2/3 space-y-4">
+        <h2 id="movieTitle" class="text-3xl font-bold"></h2>
+        <p id="movieDirector" class="text-gray-400"></p>
+        <p id="movieRelease" class="text-gray-400"></p>
+        <p id="movieGenres" class="text-gray-400"></p>
+        <p id="imdbRating" class="text-yellow-400 font-medium">IMDb Rating: Loading...</p>
+        <p id="movieOverview" class="text-gray-300 leading-relaxed"></p>
+
+        <div class="flex flex-wrap gap-3 mt-4">
+          <!-- Replace your existing buttons with this -->
+<div class="flex flex-wrap gap-3 mt-4">
+  <button 
+    data-type="watched"
+    onclick="toggleList('watched')" 
+    class="px-4 py-2 border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded transition">
+    Add to Watched
+  </button>
+
+  <button 
+    data-type="favorites"
+    onclick="toggleList('favorites')" 
+    class="px-4 py-2 border border-pink-500 text-pink-400 hover:bg-pink-500 hover:text-white rounded transition">
+    Add to Favorites
+  </button>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 🎞️ Related Movies -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-semibold mb-4">Related Movies</h2>
+      <div id="relatedMovies" class="flex overflow-x-auto gap-4 pb-4 scrollbar-hide"></div>
+    </section>
+  </main>
+
+  <script src="js/movie.js"></script>
+  <script src="js/logout.js"></script>
+
+  <!-- Hide scrollbar utility -->
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+<script src="js/search.js"></script>
+<script src="js/protect.js"></script>
+
+</body>
+</html>

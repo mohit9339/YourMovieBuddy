@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movies by Language | YourMovieBuddy</title>
+  <!-- ✅ Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- 🧭 Top Navigation -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md">
+    <h1 class="text-2xl font-bold text-white"><a href="index.html">YourMovieBuddy</a></h1>
+
+    <div class="flex items-center space-x-2">
+      <input id="searchInput" type="text" placeholder="Search movies..." class="px-2 py-1 rounded bg-gray-700 text-white" />
+      <button onclick="searchMovies()" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm">Search</button>
+    </div>
+
+    <nav class="flex space-x-4 text-sm">
+      <a href="dashboard.html" class="hover:text-blue-400">Dashboard</a>
+      <a href="profile.html" class="hover:text-blue-400">Profile</a>
+      <a href="#" onclick="logout()" class="hover:text-red-400">Logout</a>
+    </nav>
+  </header>
+
+  <!-- 🎛️ Language Filter Info -->
+  <section class="px-6 py-4">
+    <h2 id="languageTitle" class="text-xl font-semibold"></h2>
+  </section>
+
+  <!-- 🎞️ Movie Grid -->
+  <main id="languageMovies" class="px-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6"></main>
+
+  <!-- ⏳ Loading Indicator -->
+  <div id="loading" class="text-center py-6 hidden text-gray-400">Loading more movies...</div>
+
+  <!-- Scripts -->
+  <script src="js/language.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/protect.js"></script>
+
+</body>
+</html>

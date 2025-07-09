@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Directors - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+  <!-- 🔝 Navbar -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold text-teal-400">YourMovieBuddy</div>
+
+    <div class="relative max-w-xl mx-auto mt-6">
+      <input id="directorSearchInput"
+             type="text"
+             placeholder="Search directors..."
+             class="w-full px-4 py-2 rounded-md text-black focus:outline-none" />
+    
+      <ul id="suggestions" class="absolute z-10 w-full bg-white text-black shadow-md rounded-md mt-1 hidden max-h-60 overflow-y-auto"></ul>
+    </div>
+    
+    
+
+    <div class="space-x-4 text-sm">
+      <a href="index.html" class="hover:text-teal-400">Home</a>
+      <a href="profile.html" class="hover:text-teal-400">Profile</a>
+      <a href="#" onclick="logout()" class="hover:text-red-400">Log out</a>
+    </div>
+  </header>
+
+  <!-- 🎬 Directors Section -->
+  <main class="p-6">
+    <h2 class="text-3xl font-bold text-white mb-12 text-center">Famous Directors</h2>
+  
+    <div id="directorsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+      <!-- Director cards will be inserted here -->
+    </div>
+  </main>
+  
+
+  <!-- 🎬 JS -->
+  <script src="js/directors.js"></script>
+  <script src="js/director_info.js"></script>
+  <script src="js/logout.js"></script>
+</body>
+</html>

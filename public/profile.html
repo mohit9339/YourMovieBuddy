@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Profile - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- 🔝 Top Navigation -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md">
+    <div class="text-2xl font-bold text-white"><a href="index.html">YourMovieBuddy</a></div>
+    <nav class="space-x-4">
+      <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+      <a href="dashboard.html" class="text-gray-300 hover:text-white">Dashboard</a>
+      <a href="#" onclick="logout()" class="text-gray-300 hover:text-red-400">Logout</a>
+    </nav>
+  </header>
+
+  <!-- 👤 Profile Info -->
+  <main class="max-w-xl mx-auto mt-10 bg-gray-800 p-6 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-semibold mb-6 flex items-center">👤 Your Profile</h2>
+
+    <div class="space-y-4 text-lg">
+      <p><strong>Email:</strong> <span id="userEmail" class="text-gray-300">Guest</span></p>
+      <p><strong>Total Watched:</strong> <span id="watchedCount" class="text-green-400"></span></p>
+      <p><strong>Favorites:</strong> <span id="favoritesCount" class="text-yellow-400"></span></p>
+    </div>
+
+    
+  </main>
+
+  <script src="js/profile.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/protect.js"></script>
+
+</body>
+</html>

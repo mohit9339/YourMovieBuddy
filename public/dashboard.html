@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- 🔝 Navigation -->
+  <header class="flex justify-between items-center p-4 bg-gray-800 shadow-md">
+    <h1 class="text-2xl font-bold text-pink-400"><a href="index.html">YourMovieBuddy</a></h1>
+    <div class="flex-1 mx-6 max-w-xl">
+      <div class="flex">
+        <input id="searchInput" type="text" placeholder="Search for movies..."
+               class="w-full px-4 py-2 text-black rounded-l-md focus:outline-none" />
+        <button onclick="searchMovies()" class="px-4 py-2 bg-pink-500 hover:bg-pink-600 rounded-r-md text-white">
+          Search
+        </button>
+      </div>
+    </div>
+    <nav class="space-x-4">
+      
+      <a href="index.html" class="hover:text-pink-400">Home</a>
+      <a href="profile.html" class="hover:text-pink-400">Profile</a>
+      <a href="#" onclick="logout()" class="hover:text-pink-400">Logout</a>
+    </nav>
+  </header>
+
+  <!-- 📋 Main Dashboard -->
+  <main class="p-6">
+
+    <h2 class="text-3xl font-semibold text-center text-pink-300 mb-8">Your Dashboard</h2>
+
+    <!-- ✅ Watched Section -->
+    <section class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-pink-200">Watched</h3>
+      <div id="watchedList" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        
+      </div>
+    </section>
+
+    <!-- ✅ Favorites Section -->
+    <section class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-pink-200">Favorites</h3>
+      <div id="favoritesList" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- JS will populate movie cards here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/dashboard.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/protect.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Director Info - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+  <!-- 🔝 Navbar -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold text-teal-400">
+      <a href="index.html">YourMovieBuddy</a>
+    </div>
+    <div class="space-x-4 text-sm">
+      <a href="dashboard.html" class="hover:text-teal-400">Dashboard</a>
+      <a href="profile.html" class="hover:text-teal-400">Profile</a>
+      <a href="#" onclick="logout()" class="hover:text-red-400">Log out</a>
+    </div>
+  </header>
+
+  <!-- 🔍 Director Info Section -->
+  <section class="p-6 flex flex-col md:flex-row items-start gap-6">
+    <img id="directorPhoto" src="" alt="Director Photo" class="rounded shadow-lg w-full object-cover aspect-[2/3]" />
+    <div class="flex justify-center flex-col min-h-[50vh]  space-y-4">
+      <h1 id="directorName" class="text-4xl font-bold text-white mb-2"></h1>
+      <p id="directorBio" class="text-sm text-gray-300 leading-relaxed"></p>
+      <p id="birthDetails" class="mt-4 text-gray-400 text-sm italic"></p>
+    </div>
+  </section>
+
+  <!-- 🎬 Filmography Section -->
+  <section class="p-6">
+    <h2 class="text-3xl font-semibold mb-12 mt-16 text-white border-l-4 border-white pl-2">Filmography</h2>
+    <div id="filmographyList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <!-- JS will populate film cards here -->
+    </div>
+  </section>
+
+  <script src="js/director_info.js"></script>
+  <script src="js/logout.js"></script>
+</body>
+</html>

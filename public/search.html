@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Results - YourMovieBuddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+
+  <!-- 🔝 Top Nav -->
+  <header class="flex justify-between items-center p-4 bg-gray-900 shadow-md">
+    <h1 class="text-2xl font-bold text-red-500"><a href="index.html">YourMovieBuddy</a></h1>
+
+    <div class="flex gap-2">
+      <input type="text" id="searchInput" placeholder="Search for movies..." 
+             class="px-3 py-2 rounded-md text-black w-64"/>
+      <button onclick="searchMovies()" 
+              class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">
+        Search
+      </button>
+    </div>
+
+    <nav class="flex gap-4">
+      <a href="index.html" class="hover:text-blue-400">Home</a>
+      <a href="dashboard.html" class="hover:text-blue-400">Dashboard</a>
+      <a href="profile.html" class="hover:text-white">Profile</a>
+    </nav>
+  </header>
+
+  <!-- 🔍 Search Results -->
+  <main class="p-6">
+    <h2 class="text-xl font-semibold mb-4">Search Results</h2>
+    <div id="searchResults" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 p-4"></div>
+
+  </main>
+
+  <script src="js/search.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/protect.js"></script>
+
+</body>
+</html>
