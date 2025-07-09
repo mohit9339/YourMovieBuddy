@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await res.json();
 
         if (res.ok) {
-          localStorage.setItem("userEmail", email); 
+          localStorage.setItem("user", JSON.stringify({ email }));
           alert("Login successful!");
           window.location.href = "index.html";
         } else {
