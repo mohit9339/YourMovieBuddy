@@ -6,19 +6,15 @@ const dotenv = require("dotenv");
 const User = require("./models/user");
 const { getIMDBRating } = require("./imdbScraper");
 
+
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; // ✅ Render will set PORT dynamically
+const PORT = process.env.PORT || 3000;
 
-// ✅ Use your actual deployed frontend domain here
-const CLIENT_URL = "https://your-vercel-site.vercel.app"; // replace this!
 
-// ✅ Middleware
-app.use(cors({
-  origin: CLIENT_URL,
-  credentials: true,
-}));
+// Middleware
+app.use(cors());
 app.use(express.json());
 
 // ✅ Connect to MongoDB
@@ -26,11 +22,6 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
-
-// ✅ Test route
-app.get("/api/test", (req, res) => {
-  res.json({ message: "Backend is alive!" });
-});
 
 // ✅ Signup Route
 app.post("/api/signup", async (req, res) => {
@@ -136,21 +127,19 @@ app.post("/api/user/:email/lists", async (req, res) => {
   }
 });
 
-// ✅ IMDb rating route
+
+
 app.get("/api/imdb-rating/:imdbId", async (req, res) => {
   const { imdbId } = req.params;
+
   if (!imdbId) return res.status(400).json({ message: "IMDb ID is required" });
 
-  try {
-    const rating = await getIMDBRating(imdbId);
-    res.json({ imdbId, rating });
-  } catch (err) {
-    console.error("❌ IMDb rating fetch error:", err);
-    res.status(500).json({ message: "Failed to fetch IMDb rating" });
-  }
+  const rating = await getIMDBRating(imdbId);
+  res.json({ imdbId, rating });
 });
 
-// ✅ Start server
+
+// ✅ Start Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
