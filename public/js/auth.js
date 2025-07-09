@@ -1,5 +1,5 @@
-// ⛳️ Replace this with your actual Render backend URL
-const API_BASE_URL = "https://yourmoviebuddy.onrender.com";
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com"; 
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
@@ -7,9 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const email = localStorage.getItem("userEmail");
   if (email) {
+    // Already logged in, redirect to homepage
     window.location.href = "index.html";
   }
 
+
+  
   // 🔐 Signup logic
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
@@ -71,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await res.json();
 
         if (res.ok) {
-          localStorage.setItem("userEmail", email);
+          localStorage.setItem("userEmail", email); 
           alert("Login successful!");
           window.location.href = "index.html";
         } else {

@@ -1,6 +1,6 @@
 const API_KEY = "5a5aa1df6b6c58301b9f3b307582dccd";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-const API_BASE_URL = "https://yourmoviebuddy.onrender.com"; // ✅ Replace with your actual Render backend URL
+const API_BASE_URL = "https://yourmoviebuddy.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const movieId = getMovieIdFromURL();
@@ -27,7 +27,7 @@ function fetchMovieDetails(id) {
       fetchRelatedMovies(genreIds, data.id);
 
       if (data.imdb_id) fetchIMDBRating(data.imdb_id);
-      fetchMovieDirector(data.id);
+      fetchMovieDirector(data.id); // ✅ Fetch director info
     })
     .catch(err => {
       console.error("❌ Error fetching movie:", err);
@@ -158,10 +158,10 @@ function updateButton(type, isInList) {
     btn.textContent = `Remove from ${capitalize(type)}`;
     btn.classList.remove("border-blue-500", "text-blue-400", "hover:bg-blue-500");
     btn.classList.remove("border-pink-500", "text-pink-400", "hover:bg-pink-500");
-    btn.classList.add("bg-red-500", "hover:bg-red-600", "text-white", "border-red-500");
+    btn.classList.add("bg-red-500", "hover:bg-red-600", "text-white","border-red-500");
   } else {
     btn.textContent = `Add to ${capitalize(type)}`;
-    btn.classList.remove("bg-red-500", "hover:bg-red-600", "text-white", "border-red-500");
+    btn.classList.remove("bg-red-500", "hover:bg-red-600", "text-white","border-red-500");
     if (type === "favorites") {
       btn.classList.add("border-pink-500", "text-pink-400", "hover:bg-pink-500");
     } else {
