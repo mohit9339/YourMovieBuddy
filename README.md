@@ -19,5 +19,5 @@ YourMovieBuddy is a full-stack movie discovery and list management web app. User
 
 ---
 
-## 📁 Folder Structure
+
 
